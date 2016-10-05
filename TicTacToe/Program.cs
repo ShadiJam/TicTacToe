@@ -27,11 +27,9 @@ namespace TicTacToeStarter
             Console.WriteLine("> Enter a spot. \"x,y\"");
             char[] delim = { ',' };
             string[] positions = Console.ReadLine().Split(delim); // --> "1,2" -> ["1", "2"]
-
             int x = Int32.Parse(positions[0]);
             int y = Int32.Parse(positions[1]);
             int index = GetIndex(x, y);
-
             if (EmptySpot(index))
             {
                 if ((x > 0 && x < 4) && (y > 0 && y < 4))
@@ -39,25 +37,22 @@ namespace TicTacToeStarter
                     if (counter % 2 == 0)
                     {
                         board[index] = "X";
-                        xPlays.Add(index);
                         counter += 1;
 
                     }
                     else
                     {
                         board[index] = "O";
-                        oPlays.Add(index);
                         counter += 1;
                     }
                 }
                 else
                 {
                     Console.WriteLine("Invalid input. Please try again.");
-
                     Play();
-
-
-                }
+                    
+      
+                    }
                 PrintBoard();
                 Console.WriteLine(counter);
                 if (Winner() || Draw())
@@ -98,7 +93,7 @@ namespace TicTacToeStarter
                 return false;
             }
         }
-
+        
 
 
         static bool EmptySpot(int i)
